@@ -1,6 +1,7 @@
 package ru.avalon.java.dev.j10.labs.models;
 
 import ru.avalon.java.dev.j10.labs.commons.Address;
+import ru.avalon.java.dev.j10.labs.models.Passport;
 
 
 
@@ -28,37 +29,33 @@ public class Person {
      *    определены в классе.
      * 4. Подумайте над тем, какие методы должны быть объявлены
      *    в классе.
-     */
-        String name;
-        String lastName;
-        String secName;
-        String genName;
-        String fullName;
-        
-        //String a = genName.substring(0,1);//здесь не получилось
-        
+     */  
+        private String name;
         private Passport passport;
         private Address address;
         
-        public Person (String name, String lastName, String genName){
-            this.name = name;
-            this.lastName = lastName;
-            this.genName = genName;
-        }
-        
-        public Person (String name, String lastName, String genName, String secName){
-            this(name, lastName, genName);
-            this.secName = secName;
-        }
 
-        public Person (Passport passport){
-            this.passport = passport;
-        }
-        
-        public void setAddress (Address Address){
-            this.address = Address;
-        }
-            
+    public Person(String name){
+        this.name = name;
+    }
+ 
+    public String getName() {
+        return name;
+    }
+
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+             
     /**
      * Возврвщает полное имя человека.
      * <p>
@@ -77,21 +74,7 @@ public class Person {
      * @return имя человека в виде строки.
      */
     public String getFullName() {
-       
-          /*
-         * TODO(Студент): Закончить определение метода 'getFullName()' класса 'Person'
-         */
-        if ((secName == null) && (genName == null)){
-            fullName = name + " " + lastName;
-        }
-        else if ((genName == null) && (secName != null)){
-            fullName = name + " " + secName.substring(0,1) + ". " + lastName;  
-        }
-        else {
-        fullName = name + " " + lastName + " " + genName;
-    }
-            return fullName;
-    }
+         return passport.getFullName();
 
     /**
      * Возвращает адрес, по которому проживает человек.
@@ -101,12 +84,11 @@ public class Person {
      *
      * @return адрес регистрации в виде строки.
      */
-
+    }
     public String getAddress() {
         /*
          * TODO(Студент): Закончить определение метода 'getAddress()' класса 'Person'
          */
-
      return address.getAddress();
     }
 

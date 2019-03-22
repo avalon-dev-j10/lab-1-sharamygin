@@ -37,41 +37,38 @@ public class Passport {
      * 5. Обеспечте возможность использования класса за
      *    пределами пакета.
      */
-    String serialNo;
-    String name;
-    String lastName;
-    String genName;
-    String secName;
-    String dateOfBirth;
-    String dateOfIssue;
-    String org;
+   public String serialNo;
+   public String name;
+   public String lastName;
+   public String genName;
+   public String secName;
+   public String dateOfBirth;
+   public String dateOfIssue;
+   public String org;
+   public String fullName;
  
     //#1 Нет отчества и второго имени
-    public Passport(String serialNo, String name, String lastName, 
-             String dateOfBirth, String dateOfIssue, String org){
-        this.serialNo = serialNo;
+    public Passport(String name, String lastName){
         this.name = name;
         this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.dateOfIssue = dateOfIssue;
-        this.org = org;
+
     }
     //#2 нет отчества
-        public Passport(String serialNo, String name, String lastName, 
-            String secName, String dateOfBirth, String dateOfIssue, String org){
-        this(serialNo, name, lastName, dateOfBirth, dateOfIssue, org);
-        this.secName = secName;
+        public Passport(String name, String lastName, String genName){
+        this(name, lastName);
+        this.genName = genName;
     }
     //#3 оставшийся вариант
-        public Passport(String serialNo, String name, String lastName, 
-            String secName, String genName, String dateOfBirth, String dateOfIssue, String org){
-        this(serialNo, name, lastName, secName, dateOfBirth, dateOfIssue, org);
-        this.genName = genName;
+        public Passport(String name, String lastName, String genName, String secName){
+        this( name, lastName, genName);
+        this.secName = secName;
     } 
+        
+     
         public String getSerialNo(){
         return serialNo;}
     
-        public String getnName(){
+        public String getName(){
         return name;}
     
         public String lastName(){
@@ -91,4 +88,23 @@ public class Passport {
         
         public String org(){
         return org;}
+        
+        
+        public String getFullName(){
+              
+         /*
+         * TODO(Студент): Закончить определение метода 'getFullName()' класса 'Person'
+         */
+        if ((secName == null) && (genName == null)){
+            fullName = name + " " + lastName;
+        }
+        else if ((genName == null) && (secName != null)){
+            fullName = name + " " + secName.substring(0,1) + ". " + lastName;  
+        }
+        else {
+        fullName = name + " " + lastName + " " + genName;
+    }
+            return fullName;
+    }
+        
 }

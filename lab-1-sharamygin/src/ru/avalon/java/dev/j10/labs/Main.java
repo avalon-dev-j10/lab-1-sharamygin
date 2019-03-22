@@ -12,15 +12,19 @@ public class Main {
          * FIXME(Студент): Измените определение метода так, чтобы он стал точкой входа в приложение.
          */
 
-        Person ivanov = new Person("Иван", "Иванов", "Иванович");
-        
-        Person smith;
-        smith = new Person("John", "Smith", null, "Edward");
+        Person ivanov = new Person("Иван");
+        Person smith = new Person("John");
        
+        Passport ivanovPassport = new Passport(ivanov.getName(), "Иванов", "Иванович");
+        Passport smithPassport = new Passport(smith.getName(), "Smith", null, "Edvard");
+        
         
         ivanov.setAddress(new Address("Лен. обл.", "СПб", "Энгельса", "154", "3"));
         smith.setAddress(new Address("England", "Wales", "Some street", "1223", "2"));
         
+        ivanov.setPassport(ivanovPassport);
+        smith.setPassport(smithPassport);
+
                
         System.out.println(ivanov.getFullName());
         System.out.println(smith.getFullName());
